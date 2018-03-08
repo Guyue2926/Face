@@ -1,15 +1,13 @@
-from face_config import  create_httpUrl
-from face_config import  serFile
-from face_config import Data1
-from getFaceset import getFaceset
 import json
 import requests
+from face_config import Data1
+from face_config import create_httpUrl
+
 
 def creatFaceset():
-    data=dict(Data1())
-    data["display_name"]="AV2017"
-    data["outer_id"]="18114096650"
-    data["user_data"]="Hubing607"
+    # data=dict(Data1())
+    data={"display_name":"Test2017","outer_id":"13889292926","user_data":"Test"}
+    data=dict(Data1(),**data)
     respond = requests.post(create_httpUrl(), data=data)
     if respond.status_code == 200:
         text =(dict(json.loads(respond.text)))
